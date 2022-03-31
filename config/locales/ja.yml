@@ -4,17 +4,12 @@ ja:
       book: "本"
     attributes:
       book:
-        title: &title 'タイトル'
-        memo: &memo 'メモ'
-        author: &author '著者'
-        picture: &picture '画像'
+        title: 'タイトル'
+        memo: 'メモ'
+        author: '著者'
+        picture: '画像'
   books:
     index:
-      books: '本一覧'
-      title: *title
-      memo: *memo
-      author: *author
-      picture: *picture
       show: &show '詳細'
       edit: &edit '編集'
       destroy: '削除'
@@ -23,10 +18,6 @@ ja:
       new_book: *new_book
       back: &back '戻る'
     show:
-      title: *title
-      memo: *memo
-      author: *author
-      picture: *picture
       edit: *edit
       back: *back
     edit:

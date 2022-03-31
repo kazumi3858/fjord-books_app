@@ -4,17 +4,12 @@ en:
       book: "book"
     attributes:
       book:
-        title: &title 'Title'
-        memo: &memo 'Memo'
-        author: &author 'Author'
-        picture: &picture 'Picture'
+        title: 'Title'
+        memo: 'Memo'
+        author: 'Author'
+        picture: 'Picture'
   books:
     index:
-      books: 'Books'
-      title: *title
-      memo: *memo
-      author: *author
-      picture: *picture
       show: &show 'Show'
       edit: &edit 'Edit'
       destroy: 'Destroy'
@@ -23,10 +18,6 @@ en:
       new_book: *new_book
       back: &back 'Back'
     show:
-      title: *title
-      memo: *memo
-      author: *author
-      picture: *picture
       edit: *edit
       back: *back
     edit:
