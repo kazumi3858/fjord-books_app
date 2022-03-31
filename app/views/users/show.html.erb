@@ -1,0 +1,29 @@
+<div class="user-profile">
+  <h1>User Profile</h1>
+  <table>
+
+    <tr>
+      <th>Name</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Post Code</th>
+      <td><%= @user.post_code %></td>
+    </tr>
+    <tr>
+      <th>Home Address</th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th>Message</th>
+      <td><%= @user.profile_message %></td>
+    </tr>
+  </table>
+
+  <%= link_to t('views.common.back'), :back %>
+</div>

@@ -1,0 +1,13 @@
+<div class="all-users">
+  <h1>All Users</h1>
+
+  <ul class="users">
+    <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    </li>
+    <% end %>
+  </ul>
+  <%= paginate @users %>
+  <%= link_to t('views.common.back'), books_path %>
+</div>
