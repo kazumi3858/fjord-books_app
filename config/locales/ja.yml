@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      book: '本'
+    attributes:
+      book:
+        title: 'タイトル'
+        memo: 'メモ'
+        author: '著者'
+        picture: '画像'
+  show: '詳細'
+  edit: '編集'
+  destroy: '削除'
+  back: '戻る'
+  new: '%{model}を登録'
+  edit: '編集'
+  books:
+    edit:
+      editing_book: '本を編集'
+
+  helpers:
+    submit:
+      create: '登録する'
+      update: '更新する'
