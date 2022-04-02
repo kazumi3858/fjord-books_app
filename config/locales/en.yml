@@ -1,31 +1,24 @@
 en:
   activerecord:
     models:
-      book: "book"
+      book: 'Book'
     attributes:
       book:
         title: 'Title'
         memo: 'Memo'
         author: 'Author'
         picture: 'Picture'
+  show: 'Show'
+  edit: 'Edit'
+  destroy: 'Destroy'
+  back: 'Back'
+  new: 'New %{model}'
+  edit: 'Edit'
   books:
-    index:
-      show: &show 'Show'
-      edit: &edit 'Edit'
-      destroy: 'Destroy'
-      new_book: &new_book 'New Book'
-    new:
-      new_book: *new_book
-      back: &back 'Back'
-    show:
-      edit: *edit
-      back: *back
     edit:
-      editing_book: 'Editing Book'
-      show: *show
-      back: *back
+      editing_book: 'Edit Book'
 
   helpers:
     submit:
-      create: 'Create Book'
-      update: 'Update Book'
+      create: 'Create'
+      update: 'Update'

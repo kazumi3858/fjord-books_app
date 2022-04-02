@@ -1,29 +1,22 @@
 ja:
   activerecord:
     models:
-      book: "本"
+      book: '本'
     attributes:
       book:
         title: 'タイトル'
         memo: 'メモ'
         author: '著者'
         picture: '画像'
+  show: '詳細'
+  edit: '編集'
+  destroy: '削除'
+  back: '戻る'
+  new: '%{model}を登録'
+  edit: '編集'
   books:
-    index:
-      show: &show '詳細'
-      edit: &edit '編集'
-      destroy: '削除'
-      new_book: &new_book '本を登録'
-    new:
-      new_book: *new_book
-      back: &back '戻る'
-    show:
-      edit: *edit
-      back: *back
     edit:
       editing_book: '本を編集'
-      show: *show
-      back: *back
 
   helpers:
     submit:
