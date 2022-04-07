@@ -218,6 +218,9 @@ ja:
       title_show: "%{name}の詳細"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
+      title: タイトル
+      date: 日時
+      content: 内容
     pagination:
       first: '最初'
       last: '最後'
