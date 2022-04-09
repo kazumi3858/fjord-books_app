@@ -1,0 +1,27 @@
+<div class="user-profile">
+  <h1><%= User.model_name.human %></h1>
+  <table>
+    <tr>
+      <th><%= User.human_attribute_name("name") %></th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name("email") %></th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th><%= User.human_attribute_name("post_code") %></th>
+      <td><%= @user.post_code %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name("address") %></th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th><%= User.human_attribute_name("profile_message") %></th>
+      <td><%= @user.profile_message %></td>
+    </tr>
+  </table>
+  <%= link_to t('views.common.back'), :back %>
+</div>

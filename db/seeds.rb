@@ -42,4 +42,17 @@ Book.create!(
   )
 end
 
+User.destroy_all
+
+30.times do |n|
+  User.create!(
+    email: "test#{n + 1}@test.com",
+    name: "テスト#{n + 1}番",
+    post_code: '1234567',
+    address: "東京都品川区#{n + 1}番地",
+    password: "test#{n + 1}ban",
+    profile_message: "こんにちは。テスト#{n + 1}番と申します。よろしくお願いいたします。"
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
