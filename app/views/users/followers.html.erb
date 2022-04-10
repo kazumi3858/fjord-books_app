@@ -1,0 +1,7 @@
+<div class="follower-list">
+<h1><%= Follow.human_attribute_name("followers") %></h1>
+
+<%= render 'list', users: @users %>
+
+<%= link_to t('views.common.back'), user_path %>
+</div>

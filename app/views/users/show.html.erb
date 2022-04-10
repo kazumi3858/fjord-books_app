@@ -33,6 +33,21 @@
   <% end %>
 </p>
 
+<p>
+  <%= link_to Follow.human_attribute_name("followings"), followings_user_path(@user.id) %>
+  <%= @following_users.count %>
+  <%= link_to Follow.human_attribute_name("followers"), followers_user_path(@user.id) %>
+  <%= @follower_users.count %>
+
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <strong><%= link_to t('.unfollow'), user_follows_path(@user.id), method: :delete %></strong>
+    <% else %>
+      <strong><%= link_to t('.follow'), user_follows_path(@user.id), method: :post %></strong>
+    <% end %>
+  <% end %>
+</p>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
