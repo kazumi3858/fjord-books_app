@@ -19,7 +19,7 @@
 
 <div class="field">
   <%= form.label Comment.model_name.human %>
-  <%= form.text_field :comment, required: true %>
+  <%= form.text_field :comment %>
 </div>
 
 <%= form.hidden_field :commentable_id, value: commentable.id %>

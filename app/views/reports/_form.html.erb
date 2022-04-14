@@ -1,7 +1,7 @@
 <%= form_with(model: report) do |form| %>
   <% if report.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <h2><%= t('errors.template.header', :model => Report.model_name.human, :count => report.errors.count) %></h2>
 
       <ul>
         <% report.errors.each do |error| %>
@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label t'views.common.title' %>
-    <%= form.text_field :title, required: true %>
+    <%= form.label t 'views.common.title' %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label t'views.common.content' %>
-    <%= form.text_area :content, required: true %>
+    <%= form.label t 'views.common.content' %>
+    <%= form.text_area :content %>
   </div>
 
   <div class="actions">

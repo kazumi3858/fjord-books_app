@@ -26,6 +26,7 @@ class ReportsController < ApplicationController
   end
 
   def update
+    return if current_user != @report.user
     if @report.update(report_params)
       redirect_to report_url(@report)
     else
@@ -34,6 +35,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+    return if current_user != @report.user
     @report.destroy
 
     redirect_to reports_url
