@@ -15,6 +15,7 @@ class Reports::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     return if current_user != comment.user
+
     comment.destroy
     redirect_to report_url(id: params[:report_id])
   end
