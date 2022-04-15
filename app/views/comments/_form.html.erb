@@ -9,9 +9,9 @@
     <%= comment.user.name %>
   <% end %>
   <%= l comment.created_at, format: :short %>
-  <% if current_user == comment.user %>
+  <!-- if current_user == comment.user -->
     <%= link_to t('views.common.destroy'), polymorphic_url([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
-  <% end %>
+  <!-- end -->
 </p>
 <% end %>
 
@@ -19,7 +19,7 @@
 
 <div class="field">
   <%= form.label Comment.model_name.human %>
-  <%= form.text_field :comment %>
+  <%= form.text_field :comment, required: true %>
 </div>
 
 <%= form.hidden_field :commentable_id, value: commentable.id %>

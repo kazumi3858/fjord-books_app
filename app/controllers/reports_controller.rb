@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit update destroy]
+  before_action :set_report, only: :show
+  before_action :set_current_user_report, only: %i[edit update destroy]
 
   def index
     @reports = Report.includes(:comments)
@@ -13,9 +14,7 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def edit
-    redirect_to report_url(@report) if current_user != @report.user
-  end
+  def edit; end
 
   def create
     report = Report.new(report_params)
@@ -28,8 +27,6 @@ class ReportsController < ApplicationController
   end
 
   def update
-    return if current_user != @report.user
-
     if @report.update(report_params)
       redirect_to report_url(@report)
     else
@@ -38,8 +35,6 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    return if current_user != @report.user
-
     @report.destroy
 
     redirect_to reports_url
@@ -49,6 +44,13 @@ class ReportsController < ApplicationController
 
   def set_report
     @report = Report.find(params[:id])
+  end
+
+  def set_current_user_report
+    @report = Report.find(params[:id])
+    return if current_user == @report.user
+
+    render plain: '404 Not Found', status: :not_found
   end
 
   def report_params
