@@ -9,9 +9,9 @@
     <%= comment.user.name %>
   <% end %>
   <%= l comment.created_at, format: :short %>
-  <!-- if current_user == comment.user -->
+  <% if current_user == comment.user %>
     <%= link_to t('views.common.destroy'), polymorphic_url([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
-  <!-- end -->
+  <% end %>
 </p>
 <% end %>
 

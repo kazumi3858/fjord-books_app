@@ -22,12 +22,12 @@
 </p>
 <p>
   <% @report.content.each_line(chomp: true) do |line| %>
-  <%= line %><br>
+    <%= line %><br>
   <% end %>
 </p>
 
 <% if current_user == @report.user %>
-<%= link_to t('views.common.edit'), edit_report_path(@report) %>
+  <%= link_to t('views.common.edit'), edit_report_path(@report) %>
 <% end %>
 
 <%= render 'comments/form', commentable: @report, comments: @report.comments, user: @user %>
