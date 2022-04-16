@@ -47,10 +47,7 @@ class ReportsController < ApplicationController
   end
 
   def set_current_user_report
-    @report = Report.find(params[:id])
-    return if current_user == @report.user
-
-    render plain: '404 Not Found', status: :not_found
+    @report = current_user.reports.find(params[:id])
   end
 
   def report_params

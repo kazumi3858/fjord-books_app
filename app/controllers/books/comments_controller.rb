@@ -22,10 +22,7 @@ class Books::CommentsController < ApplicationController
   private
 
   def set_current_user_comment
-    @comment = Comment.find(params[:id])
-    return if current_user == @comment.user
-
-    render plain: '404 Not Found', status: :not_found
+    @comment = current_user.comments.find(params[:id])
   end
 
   def comment_params
