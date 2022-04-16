@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
+<p>
+  <strong><%= User.human_attribute_name("name") %>:</strong>
+  <% if @report.user.name.empty? %>
+    <%= @report.user.email %>
+  <% else %>
+    <%= @report.user.name %>
+  <% end %>
+</p>
+<p>
+  <strong><%= t 'views.common.title' %>:</strong>
+  <%= @report.title %>
+</p>
+<p>
+  <strong><%= t 'views.common.date' %>:</strong>
+  <%= l @report.created_at, format: :short %>
+</p>
+<p>
+  <strong><%= t 'views.common.content' %>:</strong>
+</p>
+<p>
+  <% @report.content.each_line(chomp: true) do |line| %>
+    <%= line %><br>
+  <% end %>
+</p>
+
+<% if current_user == @report.user %>
+  <%= link_to t('views.common.edit'), edit_report_path(@report) %>
+<% end %>
+
+<%= render 'comments/form', commentable: @report, comments: @report.comments, user: @user %>
+
+<%= link_to t('views.common.back'), reports_path %>

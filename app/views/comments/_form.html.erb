@@ -1,0 +1,32 @@
+<h2><%= Comment.model_name.human %></h2>
+
+<% comments.each do |comment| %>
+<p>
+  <%= comment.comment %>
+  <% if comment.user.name.empty? %>
+    <%= comment.user.email %>
+  <% else %>
+    <%= comment.user.name %>
+  <% end %>
+  <%= l comment.created_at, format: :short %>
+  <% if current_user == comment.user %>
+    <%= link_to t('views.common.destroy'), polymorphic_url([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+  <% end %>
+</p>
+<% end %>
+
+<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+
+<div class="field">
+  <%= form.label Comment.model_name.human %>
+  <%= form.text_field :comment, required: true %>
+</div>
+
+<%= form.hidden_field :commentable_id, value: commentable.id %>
+<%= form.hidden_field :commentable_type, value: commentable.class %>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>

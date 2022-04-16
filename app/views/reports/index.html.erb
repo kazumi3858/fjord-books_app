@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= Report.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t 'views.common.title' %></th>
+      <th><%= User.human_attribute_name("name") %></th>
+      <th><%= t 'views.common.date' %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.title %></td>
+        <td>
+        <% if report.user.name.empty? %>
+          <%= report.user.email %>
+        <% else %>
+          <%= report.user.name %>
+        <% end %>
+        </td>
+        <td><%= l report.created_at, format: :short %></td>
+        <td><%= link_to t('views.common.show'), report %></td>
+        <% if current_user == report.user %>
+          <td><%= link_to t('views.common.edit'), edit_report_path(report) %></td>
+          <td><%= link_to t('views.common.destroy'), report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('views.common.new'), new_report_path %>
