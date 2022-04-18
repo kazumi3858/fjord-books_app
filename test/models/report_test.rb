@@ -15,7 +15,6 @@ class ReportTest < ActiveSupport::TestCase
   test '#created_on' do
     report_of_alice = reports(:report_of_alice)
 
-    assert_not_equal '2022-04-10', report_of_alice.created_at.to_s
-    assert_equal '2022-04-10', report_of_alice.created_on.to_s
+    assert_equal Date, report_of_alice.created_on.class
   end
 end
