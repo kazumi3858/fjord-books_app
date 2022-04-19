@@ -15,9 +15,9 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    assert Relationship.find_by(follower_id: users(:alice).id, following_id: users(:bob).id).blank?
+    assert alice.active_relationships.where(following: bob).empty?
     alice.follow(bob)
-    assert Relationship.find_by(follower_id: users(:alice).id, following_id: users(:bob).id).present?
+    assert alice.active_relationships.where(following: bob).exists?
   end
 
   test '#following?' do
@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
     bob = users(:bob)
 
     assert_not alice.following?(bob)
-    Relationship.create(follower_id: users(:alice).id, following_id: users(:bob).id)
+    alice.active_relationships.create(following: bob)
     assert alice.following?(bob)
   end
 
@@ -34,7 +34,7 @@ class UserTest < ActiveSupport::TestCase
     bob = users(:bob)
 
     assert_not bob.followed_by?(alice)
-    Relationship.create(follower_id: users(:alice).id, following_id: users(:bob).id)
+    alice.active_relationships.create(following: bob)
     assert bob.followed_by?(alice)
   end
 
@@ -42,9 +42,9 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    Relationship.create(follower_id: users(:alice).id, following_id: users(:bob).id)
-    assert Relationship.find_by(follower_id: users(:alice).id, following_id: users(:bob).id).present?
+    alice.active_relationships.create(following: bob)
+    assert alice.active_relationships.where(following: bob).exists?
     alice.unfollow(bob)
-    assert Relationship.find_by(follower_id: users(:alice).id, following_id: users(:bob).id).blank?
+    assert alice.active_relationships.where(following: bob).empty?
   end
 end
