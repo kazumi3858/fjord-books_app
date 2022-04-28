@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  title: MyString
-  content: MyText
+report_of_alice:
+  user: alice
+  title: 学習1日目
+  content: Linuxについて学びました。
+  created_at: "2022-04-10 00:00:00"
 
-two:
-  user: two
-  title: MyString
-  content: MyText
+report_of_bob:
+  user: bob
+  title: 学習5日目
+  content: チェリー本を読みました。
+  created_at: "2022-04-08 00:00:00"
